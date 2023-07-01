@@ -1,0 +1,48 @@
+<table class="table table-bordered" >
+    <tr class="bg-warning">
+        <th>Sno</th>
+        <th>Product</th>
+        <th>Product Details</th>
+        <th>Product cost</th>
+        <th>Product Fig</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let item of products">
+        <td>{{item.productid}}</td>
+        <td>
+            <div *ngIf="item.isEdit">
+                <input type="text" [(ngModel)]="item.productname" class="form-control">
+            </div>
+            <div *ngIf="!item.isEdit">
+                {{item.productname}}
+            </div>
+        </td>
+        <td>
+            <div *ngIf="item.isEdit">
+                <input type="text" [(ngModel)]="item.productdetails" class="form-control">
+            </div>
+            <div *ngIf="!item.isEdit">
+                {{item.productdetails}}
+            </div>
+        </td>
+        <td>
+            <div *ngIf="item.isEdit">
+                <input type="text" [(ngModel)]="item.productcost" class="form-control">
+            </div>
+            <div *ngIf="!item.isEdit">
+                {{item.productcost}}
+            </div>
+        </td>
+        <th><img [src]="item.productimage" class="img-fluid" height="200" width="200"></th>
+        <td>
+            <div *ngIf="item.isEdit">
+                <button class="btn btn-link" (click)="update(item)"><i class="fa-solid fa-check"></i></button>
+            </div>
+            <div *ngIf="!item.isEdit">
+                <button class="btn btn-link" (click)="editcontent(item)"><i class="fa-solid fa-pen-to-square"></i></button>
+                <button class="btn btn-link" (click)="deletecontent(item)"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn btn-link" (click)="cart(item)"><i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </td>
+    </tr>
+</table>
